@@ -4,43 +4,54 @@
   width: 100%;
   align-items: center; /* manages vertical */
   justify-content: center; /* manages horizontal */
+  background-color: rgb(176, 157, 153);
 }
 
 .Main {
   text-align: center;
+  background-color: rgb(213, 206, 204);
+  height: auto;
+  width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-h1 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: inherit;
-  font-size: 2.5rem;
-  font-weight: 600;
-  text-align: center;
-  text-transform: uppercase;
-}
-
-button {
-  height: 40px;
-  width: 100px;
-  border-radius: 0.25rem;
+.Main button {
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  width: 200px;
+  height: 56px;
+  background-color: rgb(129, 181, 171);
+  border: 0;
+  box-shadow: rgb(37, 52, 49) 1.5px 1.5px;
   color: white;
-  font-size: 16px;
-  font-weight: 550;
-  background: #6c757d;
+  font-size: 1.5rem;
+  font-weight: 600;
   cursor: pointer;
-  border-color: transparent;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color none 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    border-color rgb(76, 105, 99) 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
 }
 
-button:focus {
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
+.Main button:hover {
+  color: black;
+  background-color: rgb(176, 157, 153);
 }
 
-button:hover {
-  background: #5a6268;
-  border: #545b62;
-  border-color: none;
+.QuoteBox {
+  width: 590px;
+  height: auto;
+}
+
+h3 {
+  color: #6c757d;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.QuoteIcon {
+  width: 75px;
+  height: 85px;
+  color: #6c757d;
+  display: inline;
 }
