@@ -19,7 +19,7 @@ const App = () => {
   ];
 
   const clickHandler = () => {
-    setBackground(color[Math.ceil(Math.random() * color.length)]);
+    setBackground(color[Math.floor(Math.random() * color.length)]);
   };
 
   return (

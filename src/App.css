@@ -1,5 +1,5 @@
 .App {
-  min-height: 750px;
+  height: 100vh;
   display: flex;
   align-items: center; /* manages vertical */
   justify-content: center; /* manages horizontal */
