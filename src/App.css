@@ -1,26 +1,46 @@
 .App {
-  height: 100vh;
   display: flex;
+  height: 100vh;
+  width: 100%;
   align-items: center; /* manages vertical */
   justify-content: center; /* manages horizontal */
 }
 
+.Main {
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: inherit;
+  font-size: 2.5rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+}
+
 button {
-  color: #6c757d;
-  width: 100px;
   height: 40px;
+  width: 100px;
+  border-radius: 0.25rem;
+  color: white;
   font-size: 16px;
-  background: transparent;
+  font-weight: 550;
+  background: #6c757d;
   cursor: pointer;
-  border: 1px solid #6c757d;
-  border-radius: 6%;
+  border-color: transparent;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color none 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
 button:focus {
   outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(108, 117, 125, 0.5);
 }
 
 button:hover {
-  color: white;
-  background-color: #6c757d;
+  background: #5a6268;
+  border: #545b62;
+  border-color: none;
 }

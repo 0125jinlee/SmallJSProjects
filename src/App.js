@@ -1,30 +1,20 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 import "./App.css";
 
 const App = () => {
-  const [background, setBackground] = useState("");
-  const color = [
-    "red",
-    "orange",
-    "yellow",
-    "green",
-    "blue",
-    "indigo",
-    "purple",
-    "black",
-    "pink",
-    "brown",
-    "beige",
-  ];
+  const [hexCode, setHexCode] = useState();
 
   const clickHandler = () => {
-    setBackground(color[Math.floor(Math.random() * color.length)]);
+    setHexCode("#" + Math.floor(Math.random() * 16777215).toString(16));
   };
 
   return (
-    <div className="App" style={{ backgroundColor: background }}>
-      <button onClick={clickHandler}>Click Me!</button>
+    <div className="App" style={{ backgroundColor: hexCode }}>
+      <div className="Main">
+        <h1>HEX COLOR : {hexCode}</h1>
+        <button onClick={clickHandler}>CLICK ME</button>
+      </div>
     </div>
   );
 };
