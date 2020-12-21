@@ -4,58 +4,52 @@
   width: 100%;
   align-items: center; /* manages vertical */
   justify-content: center; /* manages horizontal */
-  background-color: rgb(176, 157, 153);
+  background-color: rgb(159, 183, 207);
 }
 
-.Main {
-  text-align: center;
-  background-color: rgb(213, 206, 204);
+.msgBox {
+  min-width: 60%;
   height: auto;
-  width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 3rem;
+  padding: 1rem;
+  background-color: rgb(245, 245, 245);
+  text-align: center;
 }
 
-.Main button {
-  width: 200px;
-  height: 55px;
-  background-color: #64b6ac;
-  border: 0;
-  box-shadow: rgb(37, 52, 49) 1.5px 1.5px;
-  color: white;
-  font-size: 1.5rem;
-  font-weight: 550;
+.msgBox h2 {
+  margin-top: 0;
+}
+
+.msgBox input {
+  display: block;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  min-width: 98%;
+  height: 35px;
+  font-size: 20px;
+  padding-left: 10px;
+}
+
+.msgBox button {
+  width: 95px;
+  height: 50px;
+  background-color: rgb(159, 183, 207);
+  margin-bottom: 2%;
   cursor: pointer;
+  color: white;
+  border-radius: 7%;
+  border: 1px solid transparent;
+  font-size: 20px;
+  font-weight: bold;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.Main button:hover {
+.msgBox button:hover {
   color: black;
-  background-color: rgb(176, 157, 153);
 }
 
-h3 {
-  color: #6c757d;
-  font-size: 1.75rem;
-}
-
-.QuoteIcon {
-  margin-right: 1rem;
-  width: 70px;
-  height: 80px;
-  color: #6c757d;
-}
-
-.QuoteBox {
-  text-align: left;
-}
-
-.Quote {
-  line-height: 1.5;
-}
-
-.Author {
-  margin-top: 1rem;
-  text-align: right;
-  color: #64b6ac;
+.lastMsg {
+  color: rgb(159, 183, 207);
+  text-transform: uppercase;
+  margin-bottom: 2%;
 }
