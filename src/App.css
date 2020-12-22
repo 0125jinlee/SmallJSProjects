@@ -4,65 +4,65 @@
   width: 100%;
   align-items: center; /* manages vertical */
   justify-content: center; /* manages horizontal */
-  background-color: rgb(159, 183, 207);
+  background-image: url("background.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.msgBox {
-  min-width: 60%;
-  height: auto;
-  padding: 1rem;
-  background-color: rgb(245, 245, 245);
+.CounterBox {
+  max-width: 83.333333%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3rem;
+  border: 0.1rem solid white;
+  box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.9);
+  border-radius: 0.2rem;
   text-align: center;
 }
 
-.msgBox h2 {
+.CounterBox h1 {
+  font-size: 2.5rem;
   margin-top: 0;
-}
-
-.msgBox input {
-  display: block;
-  margin-top: 2%;
-  margin-bottom: 2%;
-  min-width: 98%;
-  height: 35px;
-  font-size: 20px;
-  padding-left: 10px;
-}
-
-.msgBox button {
-  width: 95px;
-  height: 50px;
-  background-color: rgb(159, 183, 207);
-  margin-bottom: 2%;
-  cursor: pointer;
-  color: white;
-  border-radius: 7%;
-  border: 1px solid transparent;
-  font-size: 20px;
+  margin-bottom: 0;
   font-weight: bold;
+  line-height: 1.2;
+  color: white;
+}
+
+.Counter {
+  font-size: 10rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.CounterBox button {
+  margin: 0.5rem;
+  text-align: center;
+  font-size: 1rem;
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.9);
+  background: rgba(32, 48, 84);
+  color: white;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.msgBox button:hover {
-  color: black;
+.CounterBox button:focus {
+  outline: none;
 }
 
-.Alert {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2%;
-  margin-bottom: 4%;
-  height: 35px;
-  color: #721c24;
-  background-color: #f8d7da;
-  border-color: #f5c6cb;
-  border: 1px solid transparent;
+.CounterBox button:hover {
+  background: rgba(93, 165, 234);
 }
 
-.lastMsg {
-  color: rgb(159, 183, 207);
-  text-transform: uppercase;
-  margin-bottom: 2%;
+@media (min-width: 768px) {
+  .CounterBox {
+    max-width: 50%;
+  }
 }

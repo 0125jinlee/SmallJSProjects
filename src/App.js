@@ -3,40 +3,50 @@ import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [input, setInput] = useState("");
-  const [lastMsg, setLastMsg] = useState("");
-  const [show, setShow] = useState(false);
+  const [counter, setCounter] = useState(0);
+  const [colorControl, setColorControl] = useState("rgb(51, 51, 51)");
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    if (input === "") {
-      setShow(true);
-      setTimeout(() => {
-        setShow(false);
-      }, 2000);
-    } else if (input === "" && lastMsg !== "") {
-      setLastMsg(input);
+  const decrementHandler = () => {
+    if (counter === 1) {
+      setCounter(counter - 1);
+      setColorControl("rgb(51, 51, 51)");
+    } else if (counter === 0) {
+      setColorControl("rgb(51, 51, 51)");
+      setCounter(counter - 1);
+      setColorControl("red");
+    } else if (counter > 0) {
+      setColorControl("green");
+      setCounter(counter - 1);
     } else {
-      setLastMsg(input);
-      setInput("");
+      setColorControl("red");
+      setCounter(counter - 1);
+    }
+  };
+
+  const incrementHandler = () => {
+    if (counter === -1) {
+      setCounter(counter + 1);
+      setColorControl("rgb(51, 51, 51)");
+    } else if (counter === 0) {
+      setCounter(counter + 1);
+      setColorControl("green");
+    } else if (counter > 0) {
+      setCounter(counter + 1);
+    } else if (counter < 0) {
+      setColorControl("red");
+      setCounter(counter + 1);
     }
   };
 
   return (
     <div className="App">
-      <div className="msgBox">
-        <h2>A Message You Woud Like to Pass</h2>
-        <form onSubmit={submitHandler}>
-          <input
-            type="text"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
-        {show ? <h3 className="Alert">Please Enter A Value To Pass</h3> : null}
-        <h2>Last Message Delivered</h2>
-        <h2 className="lastMsg">{lastMsg ? lastMsg : "HELLO WORLD"}</h2>
+      <div className="CounterBox">
+        <h1>COUNTER</h1>
+        <div className="Counter" style={{ color: colorControl }}>
+          {counter}
+        </div>
+        <button onClick={decrementHandler}>LOWER COUNT</button>
+        <button onClick={incrementHandler}>ADD COUNT</button>
       </div>
     </div>
   );
