@@ -5,10 +5,17 @@ import "./App.css";
 const App = () => {
   const [input, setInput] = useState("");
   const [lastMsg, setLastMsg] = useState("");
+  const [show, setShow] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
     setLastMsg(input);
+    if (lastMsg === "") {
+      setShow(true);
+      setTimeout(() => {
+        setShow(false);
+      }, 2000);
+    }
     setInput("");
   };
 
@@ -24,6 +31,7 @@ const App = () => {
           />
           <button type="submit">Submit</button>
         </form>
+        {show ? <h3 className="Alert">Please Enter A Value To Pass</h3> : null}
         <h2>Last Message Delivered</h2>
         <h2 className="lastMsg">{lastMsg ? lastMsg : "HELLO WORLD"}</h2>
       </div>

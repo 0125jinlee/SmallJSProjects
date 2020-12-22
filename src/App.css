@@ -48,6 +48,19 @@
   color: black;
 }
 
+.Alert {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2%;
+  margin-bottom: 4%;
+  height: 35px;
+  color: #721c24;
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  border: 1px solid transparent;
+}
+
 .lastMsg {
   color: rgb(159, 183, 207);
   text-transform: uppercase;
