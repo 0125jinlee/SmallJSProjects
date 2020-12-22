@@ -9,14 +9,17 @@ const App = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setLastMsg(input);
-    if (lastMsg === "") {
+    if (input === "") {
       setShow(true);
       setTimeout(() => {
         setShow(false);
       }, 2000);
+    } else if (input === "" && lastMsg !== "") {
+      setLastMsg(input);
+    } else {
+      setLastMsg(input);
+      setInput("");
     }
-    setInput("");
   };
 
   return (
