@@ -37,7 +37,7 @@
 .NextBtn {
   display: inline-block;
   position: absolute;
-  width: 2.4rem;
+  width: 2.2rem;
   height: 2.9rem;
   top: 50%;
   right: 0;
@@ -57,13 +57,25 @@
 Button:hover {
   border-color: rgb(96, 145, 201);
   background: white;
-  color: rgb(96, 145, 201);
 }
 
-.PrevArrow {
-  color: white;
-  height: 5px;
-  width: 5px;
+.PrevArr {
+  transform: rotate(180deg);
+  fill: white;
+  height: 15px;
+  justify-content: center;
+}
+
+.NextArr {
+  margin-top: 5px;
+  fill: white;
+  height: 15px;
+  justify-content: center;
+}
+
+Button:hover .NextArr,
+Button:hover .PrevArr {
+  fill: rgb(96, 145, 201);
 }
 
 @media (max-width: 720px) {
