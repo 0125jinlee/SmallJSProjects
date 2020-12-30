@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Animated } from "react-animated-css";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
@@ -22,13 +23,26 @@ const App = () => {
             className="NavBarToggler"
             type="button"
             onClick={TogglerIconHandler}
+            data-toggle="collapse"
+            data-target=".NavBarCollapse"
           >
             <span className="TogglerIcon">
               <FontAwesomeIcon className="Icon" icon={faBars} />
             </span>
           </button>
-          {!collapse ? (
-            <div className="NavBarCollapse">
+          <div
+            className="NavBarCollapse"
+            style={{
+              display: !collapse ? "block" : "none",
+            }}
+          >
+            <Animated
+              animationIn="slideInDown"
+              animationOut="slideOutUp"
+              animationInDuration={800}
+              animationOutDuration={800}
+              isVisible={true}
+            >
               <ul className="List">
                 <li className="Item">
                   <button className="Link">Home</button>
@@ -40,15 +54,17 @@ const App = () => {
                   <button className="Link">Store</button>
                 </li>
               </ul>
-            </div>
-          ) : null}
+            </Animated>
+          </div>
         </nav>
         <div className="Container">
           <div className="Row">
-            <h1>
-              "welcome to <strong>grandma's</strong>
-            </h1>
-            <button className="StoreBtn">explore</button>
+            <div className="Banner">
+              <h1>
+                welcome to <strong>grandma's</strong>
+              </h1>
+              <button>explore</button>
+            </div>
           </div>
         </div>
       </header>
