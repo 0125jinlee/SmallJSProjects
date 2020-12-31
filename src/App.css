@@ -39,6 +39,7 @@
   background-color: transparent;
   border: 1px solid transparent;
   border-radius: 0.25rem;
+  white-space: nowrap;
 }
 
 .NavBarToggler:focus {
@@ -93,13 +94,13 @@
   outline: 0;
 }
 
-.Container {
+.HeaderContainer {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
 }
 
-.Row {
+.HeaderRow {
   background: linear-gradient(
       rgba(240, 228, 148, 0.5),
       rgba(240, 228, 148, 0.5)
@@ -175,4 +176,195 @@
 
 .Banner button:focus {
   outline: 0;
+}
+
+.About {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  display: block;
+}
+
+.AboutContainer {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.AboutRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: -15px;
+  margin-left: -15px;
+}
+
+.AboutColumn {
+  display: block;
+  position: relative;
+  width: 100%;
+  max-width: 83.333333%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 3rem auto;
+  flex: 0 0 83.333333%;
+}
+
+.AboutColumn h1 {
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.AboutColumn strong {
+  color: #ef7998;
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+.AboutColumn p {
+  color: #6c757d;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  width: 75%;
+}
+
+.AboutColumn button {
+  display: inline-block;
+  font-family: inherit;
+  font-weight: 400;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  padding: 0.375rem 0.75rem;
+  cursor: pointer;
+  font-size: 1rem;
+  color: black;
+  border: 1px solid black;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  text-decoration: none;
+  background-color: transparent;
+}
+
+.AboutColumn button:hover {
+  background-color: black;
+  color: #ef7998;
+}
+
+.AboutColumn button:focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem lightgray;
+}
+
+.ImgColumn {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin: 3rem auto;
+  align-self: center;
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
+
+.ImgContainer {
+  display: block;
+  position: relative;
+}
+
+.ImgContainer::before {
+  content: "";
+  position: absolute;
+  top: -1.5rem;
+  left: -1.7rem;
+  width: 100%;
+  height: 100%;
+  outline: 0.5rem solid rgb(249, 228, 148);
+  z-index: -1;
+  transition: all 1s ease-in-out;
+}
+
+.ImgContainer::after {
+  box-sizing: border-box;
+}
+
+.ImgContainer img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.ImgContainer:hover:before {
+  top: 0;
+  left: 0;
+}
+
+.Store {
+  display: block;
+  background: rgb(238, 238, 238);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.StoreContainer {
+  display: block;
+  width: 100%;
+  max-width: 540px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.StoreRow {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+  text-align: center;
+}
+
+.StoreTitle {
+  position: relative;
+  display: block;
+  width: 100%;
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+  text-align: center;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.StoreTitle h1 {
+  text-transform: capitalize;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.StoreTitle strong {
+  color: #ef7998;
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+@media (min-width: 576px) {
+  .HeaderContainer .AboutContainer .StoreContainer {
+    max-width: 540px;
+  }
+
+  .StoreTitle {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
 }

@@ -15,33 +15,33 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <nav className="NavBar">
-          <a className="Logo" href="/">
-            <img src="logo.svg" alt="Logo" />
-          </a>
-          <button
-            className="NavBarToggler"
-            type="button"
-            onClick={TogglerIconHandler}
-            data-toggle="collapse"
-            data-target=".NavBarCollapse"
-          >
-            <span className="TogglerIcon">
-              <FontAwesomeIcon className="Icon" icon={faBars} />
-            </span>
-          </button>
-          <div
-            className="NavBarCollapse"
-            style={{
-              display: !collapse ? "block" : "none",
-            }}
-          >
-            <Animated
-              animationIn="slideInDown"
-              animationOut="slideOutUp"
-              animationInDuration={800}
-              animationOutDuration={800}
-              isVisible={true}
+        <Animated
+          animationIn="slideInDown"
+          animationOut="slideOutUp"
+          animationInDuration={800}
+          animationOutDuration={800}
+          isVisible={true}
+        >
+          <nav className="NavBar">
+            <a className="Logo" href="/">
+              <img src="logo.svg" alt="Logo" />
+            </a>
+            <button
+              className="NavBarToggler"
+              type="button"
+              onClick={TogglerIconHandler}
+              data-toggle="collapse"
+              data-target=".NavBarCollapse"
+            >
+              <span className="TogglerIcon">
+                <FontAwesomeIcon className="Icon" icon={faBars} />
+              </span>
+            </button>
+            <div
+              className="NavBarCollapse"
+              style={{
+                display: !collapse ? "block" : "none",
+              }}
             >
               <ul className="List">
                 <li className="Item">
@@ -54,11 +54,11 @@ const App = () => {
                   <button className="Link">Store</button>
                 </li>
               </ul>
-            </Animated>
-          </div>
-        </nav>
-        <div className="Container">
-          <div className="Row">
+            </div>
+          </nav>
+        </Animated>
+        <div className="HeaderContainer">
+          <div className="HeaderRow">
             <div className="Banner">
               <h1>
                 welcome to <strong>grandma's</strong>
@@ -68,6 +68,43 @@ const App = () => {
           </div>
         </div>
       </header>
+      <section className="About">
+        <div className="AboutContainer">
+          <div className="AboutRow">
+            <div className="AboutColumn">
+              <h1>
+                about <strong>us</strong>
+              </h1>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Velit,
+                aliquam voluptas beatae vitae expedita consectetur nesciunt quia
+                deserunt asperiores facere fuga dicta fugiat corrupti et omnis
+                porro at dolorum! Ad!
+              </p>
+              <button>explore</button>
+            </div>
+            <div className="ImgColumn">
+              <div class="ImgContainer">
+                <img src="sweets-1.jpeg" alt="sweets-1" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section className="Store">
+        <div className="StoreContainer">
+          <div className="StoreRow">
+            <div className="StoreTitle">
+              <h1>
+                our <strong>store</strong>
+              </h1>
+            </div>
+          </div>
+          <div className="StoreRow"></div>
+          <div className="StoreRow"></div>
+          <div className="StoreRow"></div>
+        </div>
+      </section>
     </div>
   );
 };
