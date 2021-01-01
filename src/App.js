@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Animated } from "react-animated-css";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
 
@@ -33,8 +33,8 @@ const App = () => {
               data-toggle="collapse"
               data-target=".NavBarCollapse"
             >
-              <span className="TogglerIcon">
-                <FontAwesomeIcon className="Icon" icon={faBars} />
+              <span>
+                <FontAwesomeIcon className="TogglerIcon" icon={faBars} />
               </span>
             </button>
             <div
@@ -100,8 +100,29 @@ const App = () => {
               </h1>
             </div>
           </div>
-          <div className="StoreRow"></div>
-          <div className="StoreRow"></div>
+          <div className="StoreRow">
+            <div className="StoreButtons">
+              <button>all</button>
+              <button>cakes</button>
+              <button>cupcakes</button>
+              <button>sweets</button>
+              <button>doughnuts</button>
+            </div>
+          </div>
+          <div className="StoreRow">
+            <div className="StoreSearch">
+              <form>
+                <div className="Input">
+                  <div className="InputPrepend">
+                    <span>
+                      <FontAwesomeIcon className="SearchIcon" icon={faSearch} />
+                    </span>
+                  </div>
+                  <input type="text" placeholder="item...." />
+                </div>
+              </form>
+            </div>
+          </div>
           <div className="StoreRow"></div>
         </div>
       </section>
