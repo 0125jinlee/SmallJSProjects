@@ -1,7 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Animated } from "react-animated-css";
-import { faBars, faSearch } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faSearch,
+  faShoppingCart,
+} from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
 
@@ -123,7 +127,260 @@ const App = () => {
               </form>
             </div>
           </div>
-          <div className="StoreRow"></div>
+          <div className="StoreItems">
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="sweets-1.jpeg" alt="sweets-1" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>sweet item</h5>
+                  <h5>
+                    $ <strong>5</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cupcake-1.jpeg" alt="cupcake-1" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cupcake item</h5>
+                  <h5>
+                    $ <strong>5</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cake-1.jpeg" alt="cake-1" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cake item</h5>
+                  <h5>
+                    $ <strong>5</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="doughnut-1.jpeg" alt="doughnut-1" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>doughnut item</h5>
+                  <h5>
+                    $ <strong>5</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="sweets-2.jpeg" alt="sweets-2" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>sweet item</h5>
+                  <h5>
+                    $ <strong>10</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cupcake-2.jpeg" alt="cupcake-2" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cupcake item</h5>
+                  <h5>
+                    $ <strong>10</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cake-2.jpeg" alt="cake-2" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cake item</h5>
+                  <h5>
+                    $ <strong>10</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="doughnut-2.jpeg" alt="doughnut-2" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>doughnut item</h5>
+                  <h5>
+                    $ <strong>10</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="sweets-3.jpeg" alt="sweets-3" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>sweet item</h5>
+                  <h5>
+                    $ <strong>15</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cupcake-3.jpeg" alt="cupcake-3" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cupcake item</h5>
+                  <h5>
+                    $ <strong>15</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="cake-3.jpeg" alt="cake-3" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>cake item</h5>
+                  <h5>
+                    $ <strong>5</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+            <div className="StoreItem">
+              <div className="Card">
+                <div className="ImgContainer">
+                  <img src="doughnut-3.jpeg" alt="doughnut-3" />
+                  <span>
+                    <FontAwesomeIcon
+                      className="ShoppingCartIcon"
+                      icon={faShoppingCart}
+                    />
+                  </span>
+                </div>
+              </div>
+              <div className="CardBody">
+                <div className="CardText">
+                  <h5>doughnut item</h5>
+                  <h5>
+                    $ <strong>15</strong>
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </div>
