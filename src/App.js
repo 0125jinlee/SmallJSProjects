@@ -73,7 +73,7 @@ const App = () => {
         </div>
       </header>
       <section className="About">
-        <div className="AboutContainer">
+        <div className="Container">
           <div className="AboutRow">
             <div className="AboutColumn">
               <h1>
@@ -87,8 +87,8 @@ const App = () => {
               </p>
               <button>explore</button>
             </div>
-            <div className="ImgColumn">
-              <div class="ImgContainer">
+            <div className="AboutImgColumn">
+              <div class="AboutImgContainer">
                 <img src="sweets-1.jpeg" alt="sweets-1" />
               </div>
             </div>
@@ -96,7 +96,7 @@ const App = () => {
         </div>
       </section>
       <section className="Store">
-        <div className="StoreContainer">
+        <div className="Container">
           <div className="StoreRow">
             <div className="StoreTitle">
               <h1>
@@ -354,7 +354,7 @@ const App = () => {
                 <div className="CardText">
                   <h5>cake item</h5>
                   <h5>
-                    $ <strong>5</strong>
+                    $ <strong>15</strong>
                   </h5>
                 </div>
               </div>

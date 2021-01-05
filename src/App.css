@@ -94,10 +94,13 @@
   outline: 0;
 }
 
-.HeaderContainer {
+.HeaderContainer,
+.Container {
   width: 100%;
   padding-right: 15px;
   padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .HeaderRow {
@@ -184,10 +187,9 @@
   display: block;
 }
 
-.AboutContainer {
+.Container {
   display: block;
   width: 100%;
-  max-width: 540px;
   padding-right: 15px;
   padding-left: 15px;
   margin-right: auto;
@@ -210,6 +212,7 @@
   padding-left: 15px;
   margin: 3rem auto;
   flex: 0 0 83.333333%;
+  max-width: 83.333333%;
 }
 
 .AboutColumn h1 {
@@ -235,25 +238,26 @@
 }
 
 .AboutColumn button {
+  cursor: pointer;
+  color: black;
+  text-transform: uppercase;
+  background-color: transparent;
+  background-image: none;
   display: inline-block;
   font-family: inherit;
   font-weight: 400;
   text-align: center;
-  text-transform: uppercase;
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  padding: 0.375rem 0.75rem;
-  cursor: pointer;
-  font-size: 1rem;
-  color: black;
   border: 1px solid black;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
   line-height: 1.5;
   border-radius: 0.25rem;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   text-decoration: none;
-  background-color: transparent;
 }
 
 .AboutColumn button:hover {
@@ -266,24 +270,23 @@
   box-shadow: 0 0 0 0.2rem lightgray;
 }
 
-.ImgColumn {
-  display: block;
-  position: relative;
-  width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+.AboutImgColumn {
   margin: 3rem auto;
   align-self: center;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  display: block;
 }
 
-.ImgContainer {
-  display: block;
+.AboutImgContainer {
   position: relative;
 }
 
-.ImgContainer::before {
+.AboutImgContainer::before {
   content: "";
   position: absolute;
   top: -1.5rem;
@@ -295,18 +298,14 @@
   transition: all 1s ease-in-out;
 }
 
-.ImgContainer::after {
-  box-sizing: border-box;
-}
-
-.ImgContainer img {
+.AboutImgContainer img {
   max-width: 100%;
   height: auto;
   vertical-align: middle;
   border-style: none;
 }
 
-.ImgContainer:hover:before {
+.AboutImgContainer:hover:before {
   top: 0;
   left: 0;
 }
@@ -318,10 +317,9 @@
   padding-bottom: 3rem;
 }
 
-.StoreContainer {
+.Container {
   display: block;
   width: 100%;
-  max-width: 540px;
   padding-right: 15px;
   padding-left: 15px;
   margin-left: auto;
@@ -511,6 +509,10 @@
   cursor: pointer;
 }
 
+.ImgContainer:hover img {
+  transform: scale(1.2);
+}
+
 .ImgContainer img {
   transition: all 1s ease-in-out;
   width: 100%;
@@ -520,7 +522,11 @@
   border-style: none;
 }
 
-.ImgContainer span {
+.ImgContainer:hover .ShoppingCartIcon {
+  transform: translate(0, 0);
+}
+
+.ShoppingCartIcon {
   position: absolute;
   bottom: 0;
   right: 0;
@@ -567,7 +573,7 @@
 }
 
 @media (min-width: 576px) {
-  .HeaderContainer .AboutContainer .StoreContainer {
+  .Container {
     max-width: 540px;
   }
 
