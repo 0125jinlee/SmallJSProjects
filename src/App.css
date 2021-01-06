@@ -15,6 +15,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1.5rem;
+  height: auto;
 }
 
 .Logo {
@@ -60,6 +61,8 @@
   transition: 0.5s;
   overflow: hidden;
   max-height: 0%;
+  animation: slidedown 0.15s linear;
+  animation-fill-mode: forwards;
 }
 
 .List {
@@ -101,6 +104,7 @@
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  box-sizing: border-box;
 }
 
 .HeaderRow {
@@ -207,6 +211,7 @@
   display: block;
   position: relative;
   width: 100%;
+  min-height: 1px;
   max-width: 83.333333%;
   padding-right: 15px;
   padding-left: 15px;
@@ -409,8 +414,7 @@
   width: 100%;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 1rem auto;
   padding-left: 15px;
   padding-right: 15px;
 }
@@ -418,7 +422,6 @@
 .StoreSearch form {
   box-sizing: border-box;
   display: block;
-  margin-top: 0em;
 }
 
 .Input {
@@ -427,7 +430,6 @@
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%;
-  margin-bottom: 1rem;
 }
 
 .InputPrepend {
@@ -476,18 +478,16 @@
 
 .StoreItems {
   display: flex;
-  flex-wrap: wrap;
-  margin-left: -15px;
-  margin-right: -15px;
+  flex-direction: column;
 }
 
 .StoreItem {
-  display: block;
   position: relative;
-  width: 100%;
+  display: inline;
   padding-right: 15px;
   padding-left: 15px;
-  margin: 1rem auto;
+  min-height: 1px;
+  margin: 0.5rem;
   flex: 0 0 83.333333%;
   max-width: 83.333333;
 }
@@ -496,7 +496,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  min-width: 0;
   background-color: #fff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
@@ -528,6 +527,7 @@
 
 .ShoppingCartIcon {
   position: absolute;
+  overflow: hidden;
   bottom: 0;
   right: 0;
   padding: 0.75rem;
@@ -535,14 +535,6 @@
   border-top-left-radius: 1rem;
   transition: all 1s ease-in-out;
   transform: translate(100%, 100%);
-}
-
-.ShoppingCartIcon {
-  display: inline-block;
-  font-style: normal;
-  font-variant: normal;
-  text-rendering: auto;
-  line-height: 1;
 }
 
 .CardBody {
@@ -582,26 +574,31 @@
     max-width: 50%;
   }
 
-  .StoreItem {
+  .StoreItems {
     flex: 0 0 50%;
     max-width: 50%;
   }
 }
 
 @media (min-width: 768px) {
-  .HeaderContainer .AboutContainer .StoreContainer {
+  .Container {
     max-width: 720px;
+  }
+
+  .AboutColumn {
+    flex: 0 0 50%;
+    max-width: 50%;
   }
 }
 
 @media (min-width: 992px) {
-  .HeaderContainer .AboutContainer .StoreContainer {
+  .Container {
     max-width: 960px;
   }
 }
 
 @media (min-width: 1200px) {
-  .HeaderContainer .AboutContainer .StoreContainer {
+  .Container {
     max-width: 1140px;
   }
 }

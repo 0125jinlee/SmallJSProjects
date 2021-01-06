@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Animated } from "react-animated-css";
 import {
   faBars,
   faSearch,
@@ -10,7 +9,7 @@ import {
 import "./App.css";
 
 const App = () => {
-  const [collapse, setCollapse] = useState(true);
+  const [collapse, setCollapse] = useState(false);
 
   const TogglerIconHandler = () => {
     setCollapse(!collapse);
@@ -19,48 +18,40 @@ const App = () => {
   return (
     <div className="App">
       <header>
-        <Animated
-          animationIn="slideInDown"
-          animationOut="slideOutUp"
-          animationInDuration={800}
-          animationOutDuration={800}
-          isVisible={true}
-        >
-          <nav className="NavBar">
-            <a className="Logo" href="/">
-              <img src="logo.svg" alt="Logo" />
-            </a>
-            <button
-              className="NavBarToggler"
-              type="button"
-              onClick={TogglerIconHandler}
-              data-toggle="collapse"
-              data-target=".NavBarCollapse"
-            >
-              <span>
-                <FontAwesomeIcon className="TogglerIcon" icon={faBars} />
-              </span>
-            </button>
-            <div
-              className="NavBarCollapse"
-              style={{
-                display: !collapse ? "block" : "none",
-              }}
-            >
-              <ul className="List">
-                <li className="Item">
-                  <button className="Link">Home</button>
-                </li>
-                <li className="Item">
-                  <button className="Link">About</button>
-                </li>
-                <li className="Item">
-                  <button className="Link">Store</button>
-                </li>
-              </ul>
-            </div>
-          </nav>
-        </Animated>
+        <nav className="NavBar">
+          <a className="Logo" href="/">
+            <img src="logo.svg" alt="Logo" />
+          </a>
+          <button
+            className="NavBarToggler"
+            type="button"
+            onClick={TogglerIconHandler}
+            data-toggle="collapse"
+            data-target=".NavBarCollapse"
+          >
+            <span>
+              <FontAwesomeIcon className="TogglerIcon" icon={faBars} />
+            </span>
+          </button>
+          <div
+            className="NavBarCollapse"
+            style={{
+              display: !collapse ? "none" : "block",
+            }}
+          >
+            <ul className="List">
+              <li className="Item">
+                <button className="Link">Home</button>
+              </li>
+              <li className="Item">
+                <button className="Link">About</button>
+              </li>
+              <li className="Item">
+                <button className="Link">Store</button>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div className="HeaderContainer">
           <div className="HeaderRow">
             <div className="Banner">
