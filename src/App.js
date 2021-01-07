@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
@@ -9,11 +9,21 @@ import {
 import "./App.css";
 
 const App = () => {
-  const [collapse, setCollapse] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const TogglerIconHandler = () => {
-    setCollapse(!collapse);
+    setOpen(!open);
   };
+
+  const checkFull = () => {
+    if (window.innerWidth >= 992) {
+      setOpen(true);
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", checkFull());
+  }, []);
 
   return (
     <div className="App">
@@ -36,7 +46,7 @@ const App = () => {
           <div
             className="NavBarCollapse"
             style={{
-              display: !collapse ? "none" : "block",
+              display: open ? "flex" : "none",
             }}
           >
             <ul className="List">

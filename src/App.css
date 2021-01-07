@@ -54,6 +54,7 @@
 }
 
 .NavBarCollapse {
+  display: none;
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
@@ -594,6 +595,29 @@
 @media (min-width: 992px) {
   .Container {
     max-width: 960px;
+  }
+
+  .NavBar {
+    flex-flow: row nowrap;
+    justify-content: flex-start;
+  }
+
+  .NavBarToggler {
+    display: none;
+  }
+
+  .NavBarCollapse {
+    display: show;
+    flex-basis: auto;
+  }
+
+  .List {
+    flex-direction: row;
+  }
+
+  .Item {
+    padding-right: 0.5rem;
+    padding-left: 0.5rem;
   }
 }
 
