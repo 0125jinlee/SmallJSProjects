@@ -15,7 +15,6 @@
   align-items: center;
   justify-content: space-between;
   padding: 0.5rem 1.5rem;
-  height: auto;
 }
 
 .Logo {
@@ -54,7 +53,6 @@
 }
 
 .NavBarCollapse {
-  display: none;
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
@@ -96,6 +94,40 @@
 
 .Link:focus {
   outline: 0;
+}
+
+.Info {
+  display: none;
+  font-weight: 600;
+  align-items: center;
+}
+
+.PhoneNumber {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Cart {
+  border: 0.1rem solid black;
+  border-radius: 0.25rem;
+  padding: 0.4rem 0.6rem;
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+  display: flex;
+  max-height: 20px;
+}
+
+.Cart:hover {
+  background-color: #ef7998;
+  color: #fff;
+}
+
+.Price {
+  text-transform: capitalize;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .HeaderContainer,
@@ -209,13 +241,6 @@
 }
 
 .AboutColumn {
-  display: block;
-  position: relative;
-  width: 100%;
-  min-height: 1px;
-  max-width: 83.333333%;
-  padding-right: 15px;
-  padding-left: 15px;
   margin: 3rem auto;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
@@ -335,6 +360,8 @@
 .StoreRow {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   margin-left: -15px;
   margin-right: -15px;
 }
@@ -410,19 +437,15 @@
 }
 
 .StoreSearch {
-  position: relative;
-  display: block;
-  width: 100%;
-  flex: 0 0 83.333333%;
-  max-width: 83.333333%;
+  display: flex;
+  width: 50%;
   margin: 1rem auto;
-  padding-left: 15px;
-  padding-right: 15px;
+  justify-content: center;
 }
 
 .StoreSearch form {
-  box-sizing: border-box;
   display: block;
+  width: 100%;
 }
 
 .Input {
@@ -479,18 +502,16 @@
 
 .StoreItems {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .StoreItem {
-  position: relative;
-  display: inline;
-  padding-right: 15px;
-  padding-left: 15px;
-  min-height: 1px;
   margin: 0.5rem;
-  flex: 0 0 83.333333%;
-  max-width: 83.333333;
+  flex: 0 0 30%;
+  max-width: 30%;
 }
 
 .Card {
@@ -570,14 +591,18 @@
     max-width: 540px;
   }
 
+  .StoreSearch {
+    width: 83%;
+  }
+
   .StoreTitle {
     flex: 0 0 50%;
     max-width: 50%;
   }
 
-  .StoreItems {
-    flex: 0 0 50%;
-    max-width: 50%;
+  .StoreItem {
+    flex: 0 0 46%;
+    max-width: 46%;
   }
 }
 
@@ -589,6 +614,22 @@
   .AboutColumn {
     flex: 0 0 50%;
     max-width: 50%;
+  }
+
+  .AboutRow {
+    flex-wrap: nowrap;
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .AboutImgColumn {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .StoreItem {
+    flex: 0 0 30%;
+    max-width: 30%;
   }
 }
 
@@ -607,17 +648,42 @@
   }
 
   .NavBarCollapse {
-    display: show;
+    display: flex;
     flex-basis: auto;
+    justify-content: center;
   }
 
   .List {
     flex-direction: row;
+    align-content: space-between;
   }
 
   .Item {
     padding-right: 0.5rem;
     padding-left: 0.5rem;
+  }
+
+  .Info {
+    display: flex;
+  }
+
+  .PhoneNumber {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .PhoneNumber span {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .Cart {
+    margin-left: 3rem;
+    margin-right: 3rem;
+  }
+
+  .CartIcon {
+    margin-right: 1rem;
   }
 }
 

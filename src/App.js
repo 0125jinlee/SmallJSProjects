@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faBars,
   faSearch,
+  faPhone,
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -15,14 +16,22 @@ const App = () => {
     setOpen(!open);
   };
 
-  const checkFull = () => {
-    if (window.innerWidth >= 992) {
-      setOpen(true);
-    }
-  };
-
   useEffect(() => {
-    window.addEventListener("resize", checkFull());
+    window.addEventListener("load", () => {
+      if (window.innerWidth >= 992) {
+        setOpen(true);
+      } else if (window.innerWidth < 992) {
+        setOpen(false);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 992) {
+        setOpen(true);
+      } else if (window.innerWidth < 992) {
+        setOpen(false);
+      }
+    });
   }, []);
 
   return (
@@ -60,6 +69,23 @@ const App = () => {
                 <button className="Link">Store</button>
               </li>
             </ul>
+          </div>
+          <div className="Info">
+            <div className="PhoneNumber">
+              <span>
+                <FontAwesomeIcon className="PhoneIcon" icon={faPhone} />
+              </span>
+              <p>+ 123 456 789</p>
+            </div>
+            <div className="Cart">
+              <span>
+                <FontAwesomeIcon className="CartIcon" icon={faShoppingCart} />
+              </span>
+              <p className="Price">
+                <span id="count">2 </span> items - $
+                <span id="total">10.49</span>
+              </p>
+            </div>
           </div>
         </nav>
         <div className="HeaderContainer">
