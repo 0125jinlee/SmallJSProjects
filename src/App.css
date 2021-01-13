@@ -56,12 +56,8 @@
   flex-basis: 100%;
   flex-grow: 1;
   align-items: center;
-  box-sizing: border-box;
   transition: 0.5s;
   overflow: hidden;
-  max-height: 0%;
-  animation: slidedown 0.15s linear;
-  animation-fill-mode: forwards;
 }
 
 .List {
@@ -509,84 +505,6 @@
   width: 100%;
 }
 
-.StoreItem {
-  margin: 0.5rem;
-  flex: 0 0 30%;
-  max-width: 30%;
-}
-
-.Card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 1px solid rgba(0, 0, 0, 0.125);
-  border-radius: 0.25rem;
-}
-
-.ImgContainer {
-  position: relative;
-  overflow: hidden;
-  cursor: pointer;
-}
-
-.ImgContainer:hover img {
-  transform: scale(1.2);
-}
-
-.ImgContainer img {
-  transition: all 1s ease-in-out;
-  width: 100%;
-  border-top-left-radius: calc(0.25rem - 1px);
-  border-top-right-radius: calc(0.25rem - 1px);
-  vertical-align: middle;
-  border-style: none;
-}
-
-.ImgContainer:hover .ShoppingCartIcon {
-  transform: translate(0, 0);
-}
-
-.ShoppingCartIcon {
-  position: absolute;
-  overflow: hidden;
-  bottom: 0;
-  right: 0;
-  padding: 0.75rem;
-  background: rgb(249, 228, 148);
-  border-top-left-radius: 1rem;
-  transition: all 1s ease-in-out;
-  transform: translate(100%, 100%);
-}
-
-.CardBody {
-  background-color: #fff;
-  flex: 1 1 auto;
-  padding: 1.25rem;
-  display: block;
-}
-
-.CardText {
-  margin-bottom: 0;
-  text-transform: capitalize;
-  justify-content: space-between;
-  display: flex;
-}
-
-.CardText h5 {
-  font-size: 1.25rem;
-  margin-top: 0;
-  margin-bottom: 0.5rem;
-  font-family: inherit;
-  font-weight: 500;
-  line-height: 1.2;
-}
-
-.CardText strong {
-  font-weight: 700;
-}
-
 @media (min-width: 576px) {
   .Container {
     max-width: 540px;
@@ -599,11 +517,6 @@
   .StoreTitle {
     flex: 0 0 50%;
     max-width: 50%;
-  }
-
-  .StoreItem {
-    flex: 0 0 46%;
-    max-width: 46%;
   }
 }
 
@@ -626,11 +539,6 @@
   .AboutImgColumn {
     flex: 0 0 50%;
     max-width: 50%;
-  }
-
-  .StoreItem {
-    flex: 0 0 30%;
-    max-width: 30%;
   }
 }
 

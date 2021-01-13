@@ -7,6 +7,7 @@ import {
   faShoppingCart,
 } from "@fortawesome/free-solid-svg-icons";
 
+import StoreItem from "./StoreItem";
 import "./App.css";
 
 const App = () => {
@@ -38,10 +39,9 @@ const App = () => {
 
   const searchTermHandler = (e) => {
     e.preventDefault();
+    setfilterSelected("all");
     setSearchTerm(e.target.value.toLowerCase().trim());
   };
-
-  console.log(searchTerm);
 
   const allButtonHandler = () => {
     setfilterSelected("all");
@@ -62,6 +62,27 @@ const App = () => {
   const doughnutsButtonHandler = () => {
     setfilterSelected("doughnut");
   };
+
+  const data = [
+    { item: "sweet", imgUrl: "sweet-1.jpeg", price: "5" },
+    { item: "cupcake", imgUrl: "cupcake-1.jpeg", price: "5" },
+    { item: "cake", imgUrl: "cake-1.jpeg", price: "5" },
+    { item: "doughnut", imgUrl: "doughnut-1.jpeg", price: "5" },
+    { item: "sweet", imgUrl: "sweet-2.jpeg", price: "10" },
+    { item: "cupcake", imgUrl: "cupcake-2.jpeg", price: "10" },
+    { item: "cake", imgUrl: "cake-2.jpeg", price: "10" },
+    { item: "doughnut", imgUrl: "doughnut-2.jpeg", price: "10" },
+    { item: "sweet", imgUrl: "sweet-3.jpeg", price: "15" },
+    { item: "cupcake", imgUrl: "cupcake-3.jpeg", price: "15" },
+    { item: "cake", imgUrl: "cake-3.jpeg", price: "15" },
+    { item: "doughnut", imgUrl: "doughnut-3.jpeg", price: "15" },
+  ];
+
+  const filteredData = data.filter((item) => {
+    return Object.keys(item).some((key) =>
+      item[key].toLowerCase().includes(searchTerm)
+    );
+  });
 
   return (
     <div className="App">
@@ -89,13 +110,19 @@ const App = () => {
           >
             <ul className="List">
               <li className="Item">
-                <button className="Link">Home</button>
+                <button className="Link" key="homebutton">
+                  Home
+                </button>
               </li>
               <li className="Item">
-                <button className="Link">About</button>
+                <button className="Link" key="aboutbutton">
+                  About
+                </button>
               </li>
               <li className="Item">
-                <button className="Link">Store</button>
+                <button className="Link" key="storebutton">
+                  Store
+                </button>
               </li>
             </ul>
           </div>
@@ -145,7 +172,7 @@ const App = () => {
             </div>
             <div className="AboutImgColumn">
               <div class="AboutImgContainer">
-                <img src="sweets-1.jpeg" alt="sweets-1" />
+                <img src="sweet-1.jpeg" alt="sweet-1" />
               </div>
             </div>
           </div>
@@ -188,282 +215,15 @@ const App = () => {
             </div>
           </div>
           <div className="StoreItems">
-            {filterSelected === "all" || filterSelected === "sweet" ? (
-              <div className="StoreItem">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="sweets-1.jpeg" alt="sweets-1" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>sweet item</h5>
-                    <h5>
-                      $ <strong>5</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cupcake" ? (
-              <div className="StoreItem">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cupcake-1.jpeg" alt="cupcake-1" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cupcake item</h5>
-                    <h5>
-                      $ <strong>5</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cake" ? (
-              <div className="StoreItem" id="cake">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cake-1.jpeg" alt="cake-1" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cake item</h5>
-                    <h5>
-                      $ <strong>5</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "doughnut" ? (
-              <div className="StoreItem" id="doughnut">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="doughnut-1.jpeg" alt="doughnut-1" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>doughnut item</h5>
-                    <h5>
-                      $ <strong>5</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "sweet" ? (
-              <div className="StoreItem" id="sweet">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="sweets-2.jpeg" alt="sweets-2" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>sweet item</h5>
-                    <h5>
-                      $ <strong>10</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cupcake" ? (
-              <div className="StoreItem" id="cupcake">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cupcake-2.jpeg" alt="cupcake-2" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cupcake item</h5>
-                    <h5>
-                      $ <strong>10</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cake" ? (
-              <div className="StoreItem" id="cake">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cake-2.jpeg" alt="cake-2" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cake item</h5>
-                    <h5>
-                      $ <strong>10</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "doughnut" ? (
-              <div className="StoreItem" id="doughnut">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="doughnut-2.jpeg" alt="doughnut-2" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>doughnut item</h5>
-                    <h5>
-                      $ <strong>10</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "sweet" ? (
-              <div className="StoreItem" id="sweet">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="sweets-3.jpeg" alt="sweets-3" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>sweet item</h5>
-                    <h5>
-                      $ <strong>15</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cupcake" ? (
-              <div className="StoreItem" id="cupcake">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cupcake-3.jpeg" alt="cupcake-3" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cupcake item</h5>
-                    <h5>
-                      $ <strong>15</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "cake" ? (
-              <div className="StoreItem" id="cake">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="cake-3.jpeg" alt="cake-3" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>cake item</h5>
-                    <h5>
-                      $ <strong>15</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
-            {filterSelected === "all" || filterSelected === "doughnut" ? (
-              <div className="StoreItem" id="doughnut">
-                <div className="Card">
-                  <div className="ImgContainer">
-                    <img src="doughnut-3.jpeg" alt="doughnut-3" />
-                    <span>
-                      <FontAwesomeIcon
-                        className="ShoppingCartIcon"
-                        icon={faShoppingCart}
-                      />
-                    </span>
-                  </div>
-                </div>
-                <div className="CardBody">
-                  <div className="CardText">
-                    <h5>doughnut item</h5>
-                    <h5>
-                      $ <strong>15</strong>
-                    </h5>
-                  </div>
-                </div>
-              </div>
-            ) : null}
+            {filteredData.map((item) =>
+              filterSelected === "all" || filterSelected === item.item ? (
+                <StoreItem
+                  imgUrl={item.imgUrl}
+                  item={item.item}
+                  price={item.price}
+                />
+              ) : null
+            )}
           </div>
         </div>
       </section>
