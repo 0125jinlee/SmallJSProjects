@@ -8,12 +8,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import StoreItem from "./StoreItem";
+import Modal from "./Modal";
 import "./App.css";
 
 const App = () => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [filterSelected, setfilterSelected] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     window.addEventListener("load", () => {
@@ -63,6 +65,10 @@ const App = () => {
     setfilterSelected("doughnut");
   };
 
+  const modalHandler = () => {
+    setModalOpen(!modalOpen);
+  };
+
   const data = [
     { item: "sweet", imgUrl: "sweet-1.jpeg", price: "5" },
     { item: "cupcake", imgUrl: "cupcake-1.jpeg", price: "5" },
@@ -79,10 +85,16 @@ const App = () => {
   ];
 
   const filteredData = data.filter((item) => {
-    return Object.keys(item).some((key) =>
-      item[key].toLowerCase().includes(searchTerm)
-    );
+    if (filterSelected === "all") {
+      return Object.keys(item).some((key) =>
+        item[key].toLowerCase().includes(searchTerm)
+      );
+    } else {
+      return Object.keys(item).some((key) => item[key] === filterSelected);
+    }
   });
+
+  console.log(filteredData);
 
   return (
     <div className="App">
@@ -215,18 +227,22 @@ const App = () => {
             </div>
           </div>
           <div className="StoreItems">
-            {filteredData.map((item) =>
-              filterSelected === "all" || filterSelected === item.item ? (
-                <StoreItem
-                  imgUrl={item.imgUrl}
-                  item={item.item}
-                  price={item.price}
-                />
-              ) : null
-            )}
+            {filteredData.map((item) => (
+              <StoreItem
+                imgUrl={item.imgUrl}
+                item={item.item}
+                price={item.price}
+                modalHandler={modalHandler}
+              />
+            ))}
           </div>
         </div>
       </section>
+      <Modal
+        modalOpen={modalOpen}
+        modalHandler={modalHandler}
+        imgUrl={filteredData}
+      />
     </div>
   );
 };

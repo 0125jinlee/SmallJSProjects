@@ -6,7 +6,7 @@ import "./StoreItem.css";
 
 const StoreItem = (props) => {
   return (
-    <div className="StoreItem">
+    <div className="StoreItem" onClick={props.modalHandler}>
       <div className="Card">
         <div className="ImgContainer">
           <img src={props.imgUrl} alt={props.imgUrl} />
