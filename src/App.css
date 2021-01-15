@@ -388,6 +388,12 @@
   font-weight: bolder;
 }
 
+.StoreButtons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 .StoreButton {
   display: flex;
   position: relative;

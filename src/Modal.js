@@ -9,6 +9,9 @@ import {
 import "./Modal.css";
 
 const Modal = (props) => {
+  if (props.data.length === 0) {
+    return null;
+  }
   return (
     <div
       className="ModalContainer"
@@ -22,13 +25,13 @@ const Modal = (props) => {
           <div
             className="ModalImage"
             style={{
-              backgroundImage: props.imgUrl,
+              backgroundImage: `url(${props.data[props.offset].imgUrl})`,
             }}
           ></div>
-          <span className="ModalBtnLeft">
+          <span onClick={props.leftBtnHandler} className="ModalBtnLeft">
             <FontAwesomeIcon icon={faCaretLeft} />
           </span>
-          <span className="ModalBtnRight">
+          <span onClick={props.rightBtnHandler} className="ModalBtnRight">
             <FontAwesomeIcon icon={faCaretRight} />
           </span>
         </div>

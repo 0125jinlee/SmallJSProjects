@@ -9,6 +9,7 @@ import {
 
 import StoreItem from "./StoreItem";
 import Modal from "./Modal";
+import { data } from "./data";
 import "./App.css";
 
 const App = () => {
@@ -16,6 +17,8 @@ const App = () => {
   const [filterSelected, setfilterSelected] = useState("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [filteredData, setFilteredData] = useState(data);
 
   useEffect(() => {
     window.addEventListener("load", () => {
@@ -34,6 +37,20 @@ const App = () => {
       }
     });
   }, []);
+
+  useEffect(() => {
+    setFilteredData(
+      data.filter((item) => {
+        if (filterSelected === "all") {
+          return Object.keys(item).some((key) =>
+            item[key].toLowerCase().includes(searchTerm)
+          );
+        } else {
+          return Object.keys(item).some((key) => item[key] === filterSelected);
+        }
+      })
+    );
+  }, [filterSelected, searchTerm]);
 
   const TogglerIconHandler = () => {
     setOpen(!open);
@@ -69,32 +86,21 @@ const App = () => {
     setModalOpen(!modalOpen);
   };
 
-  const data = [
-    { item: "sweet", imgUrl: "sweet-1.jpeg", price: "5" },
-    { item: "cupcake", imgUrl: "cupcake-1.jpeg", price: "5" },
-    { item: "cake", imgUrl: "cake-1.jpeg", price: "5" },
-    { item: "doughnut", imgUrl: "doughnut-1.jpeg", price: "5" },
-    { item: "sweet", imgUrl: "sweet-2.jpeg", price: "10" },
-    { item: "cupcake", imgUrl: "cupcake-2.jpeg", price: "10" },
-    { item: "cake", imgUrl: "cake-2.jpeg", price: "10" },
-    { item: "doughnut", imgUrl: "doughnut-2.jpeg", price: "10" },
-    { item: "sweet", imgUrl: "sweet-3.jpeg", price: "15" },
-    { item: "cupcake", imgUrl: "cupcake-3.jpeg", price: "15" },
-    { item: "cake", imgUrl: "cake-3.jpeg", price: "15" },
-    { item: "doughnut", imgUrl: "doughnut-3.jpeg", price: "15" },
-  ];
-
-  const filteredData = data.filter((item) => {
-    if (filterSelected === "all") {
-      return Object.keys(item).some((key) =>
-        item[key].toLowerCase().includes(searchTerm)
-      );
+  const leftBtnHandler = () => {
+    if (selectedIndex === 0) {
+      setSelectedIndex(filteredData.length - 1);
     } else {
-      return Object.keys(item).some((key) => item[key] === filterSelected);
+      setSelectedIndex(selectedIndex - 1);
     }
-  });
+  };
 
-  console.log(filteredData);
+  const rightBtnHandler = () => {
+    if (selectedIndex + 1 === filteredData.length) {
+      setSelectedIndex(0);
+    } else {
+      setSelectedIndex(selectedIndex + 1);
+    }
+  };
 
   return (
     <div className="App">
@@ -227,12 +233,15 @@ const App = () => {
             </div>
           </div>
           <div className="StoreItems">
-            {filteredData.map((item) => (
+            {filteredData.map((item, index) => (
               <StoreItem
                 imgUrl={item.imgUrl}
                 item={item.item}
                 price={item.price}
-                modalHandler={modalHandler}
+                modalHandler={() => {
+                  modalHandler();
+                  setSelectedIndex(index);
+                }}
               />
             ))}
           </div>
@@ -241,7 +250,10 @@ const App = () => {
       <Modal
         modalOpen={modalOpen}
         modalHandler={modalHandler}
-        imgUrl={filteredData}
+        data={filteredData}
+        offset={selectedIndex}
+        rightBtnHandler={rightBtnHandler}
+        leftBtnHandler={leftBtnHandler}
       />
     </div>
   );
