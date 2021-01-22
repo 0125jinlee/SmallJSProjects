@@ -3,10 +3,29 @@ import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [input, setInput] = useState("");
-  const [nextInput, setNextInput] = useState("");
+  const [prevValue, setPrevValue] = useState(null);
+  const [nextValue, setNextValue] = useState(null);
+  const [displayValue, setDisplayValue] = useState("");
 
-  const multiplyHandler = () => {};
+  const [operator] = useState({
+    "/": (prevVal, nextVal) => prevVal / nextVal,
+    "*": (prevVal, nextVal) => prevVal * nextVal,
+    "+": (prevVal, nextVal) => prevVal + nextVal,
+    "-": (prevVal, nextVal) => prevVal - nextVal,
+    "=": (prevVal, nextVal) => nextVal,
+  });
+
+  const multiplyHandler = () => {
+    if (!prevValue && !nextValue) {
+      setPrevValue(Number(displayValue));
+    } else if (!prevValue && nextValue) {
+      setPrevValue(Number(displayValue));
+    } else if (prevValue && nextValue) {
+      setNextValue(Number(prevValue + "*" + nextValue));
+      setDisplayValue(Number(prevValue + "*" + nextValue));
+    }
+    setDisplayValue("");
+  };
 
   const divideHandler = () => {};
 
@@ -15,60 +34,58 @@ const App = () => {
   const plusHandler = () => {};
 
   const pointHandler = () => {
-    setInput(input + ".");
+    setDisplayValue(displayValue + ".");
   };
 
   const nineHandler = () => {
-    setInput(input + "9");
+    setDisplayValue(displayValue + "9");
   };
 
   const eightHandler = () => {
-    setInput(input + "8");
+    setDisplayValue(displayValue + "8");
   };
 
   const sevenHandler = () => {
-    setInput(input + "7");
+    setDisplayValue(displayValue + "7");
   };
 
   const sixHandler = () => {
-    setInput(input + "6");
+    setDisplayValue(displayValue + "6");
   };
 
   const fiveHandler = () => {
-    setInput(input + "5");
+    setDisplayValue(displayValue + "5");
   };
 
   const fourHandler = () => {
-    setInput(input + "4");
+    setDisplayValue(displayValue + "4");
   };
 
   const threeHandler = () => {
-    setInput(input + "3");
+    setDisplayValue(displayValue + "3");
   };
 
   const twoHandler = () => {
-    setInput(input + "2");
+    setDisplayValue(displayValue + "2");
   };
 
   const oneHandler = () => {
-    setInput(input + "1");
+    setDisplayValue(displayValue + "1");
   };
 
   const zeroHandler = () => {
-    setInput(input + "0");
+    setDisplayValue(displayValue + "0");
   };
 
   const equalHandler = () => {};
 
-  const clearHandler = () => {
-    setInput("");
-  };
+  const clearHandler = () => {};
 
   return (
     <div className="App">
       <section className="Calculator">
         <form>
-          <input className="Screen" type="text" value={Number(input)} />
+          <input className="Screen" type="text" value={displayValue} />
         </form>
         <div className="Buttons">
           <button type="button" className="BtnYellow" onClick={multiplyHandler}>
