@@ -3,89 +3,119 @@ import React, { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [prevValue, setPrevValue] = useState(null);
-  const [nextValue, setNextValue] = useState(null);
-  const [displayValue, setDisplayValue] = useState("");
+  const [displayValue, setDisplayValue] = useState("0");
+  const [prevValue, setPrevValue] = useState("");
+  const [nextValue, setNextValue] = useState("");
+  const [equal, setEqual] = useState(true);
+  const [reset, setReset] = useState(false);
 
-  const [operator] = useState({
-    "/": (prevVal, nextVal) => prevVal / nextVal,
-    "*": (prevVal, nextVal) => prevVal * nextVal,
-    "+": (prevVal, nextVal) => prevVal + nextVal,
-    "-": (prevVal, nextVal) => prevVal - nextVal,
-    "=": (prevVal, nextVal) => nextVal,
-  });
-
-  const multiplyHandler = () => {
-    if (!prevValue && !nextValue) {
-      setPrevValue(Number(displayValue));
-    } else if (!prevValue && nextValue) {
-      setPrevValue(Number(displayValue));
-    } else if (prevValue && nextValue) {
-      setNextValue(Number(prevValue + "*" + nextValue));
-      setDisplayValue(Number(prevValue + "*" + nextValue));
+  const multiplyHandler = (e) => {
+    e.preventDefault();
+    if (prevValue.length === 0 && displayValue.length !== 0) {
+      setPrevValue(displayValue);
+      setDisplayValue("");
+    } else if (prevValue.length !== 0 && displayValue.length === 0) {
+      let temp = Number(prevValue) * Number(displayValue);
+      setNextValue(temp);
+      setPrevValue(temp);
+      setReset(true);
     }
-    setDisplayValue("");
   };
 
-  const divideHandler = () => {};
-
-  const minusHandler = () => {};
-
-  const plusHandler = () => {};
-
-  const pointHandler = () => {
-    setDisplayValue(displayValue + ".");
+  const divideHandler = (e) => {
+    e.preventDefault();
+    if (prevValue.length === 0 && nextValue.length === 0) {
+      setPrevValue(displayValue);
+      setDisplayValue("");
+    } else if (prevValue.length !== 0 && nextValue.length === 0) {
+      let temp = Number(prevValue) / Number(displayValue);
+      setDisplayValue(temp);
+      setPrevValue(temp);
+      setNextValue("");
+      setReset(true);
+    }
   };
 
-  const nineHandler = () => {
-    setDisplayValue(displayValue + "9");
+  const minusHandler = (e) => {
+    e.preventDefault();
+    if (prevValue.length === 0 && nextValue.length === 0) {
+      setPrevValue(displayValue);
+      setDisplayValue("");
+    } else if (prevValue.length !== 0 && nextValue.length === 0) {
+      let temp = Number(prevValue) - Number(displayValue);
+      setDisplayValue(temp);
+      setPrevValue(temp);
+      setNextValue("");
+      setReset(true);
+    }
   };
 
-  const eightHandler = () => {
-    setDisplayValue(displayValue + "8");
+  const plusHandler = (e) => {
+    e.preventDefault();
+    if (prevValue.length === 0 && nextValue.length === 0) {
+      setPrevValue(displayValue);
+      setDisplayValue("");
+    } else if (prevValue.length !== 0 && nextValue.length === 0) {
+      let temp = Number(prevValue) + Number(displayValue);
+      setDisplayValue(temp);
+      setPrevValue(temp);
+      setNextValue("");
+      setReset(true);
+    }
   };
 
-  const sevenHandler = () => {
-    setDisplayValue(displayValue + "7");
+  const equalHandler = (e) => {
+    setDisplayValue(nextValue);
+    setPrevValue("");
+    setNextValue("");
+    setReset(true);
   };
 
-  const sixHandler = () => {
-    setDisplayValue(displayValue + "6");
+  const clearHandler = () => {
+    setDisplayValue("0");
+    setPrevValue("");
+    setNextValue("");
   };
 
-  const fiveHandler = () => {
-    setDisplayValue(displayValue + "5");
-  };
-
-  const fourHandler = () => {
-    setDisplayValue(displayValue + "4");
-  };
-
-  const threeHandler = () => {
-    setDisplayValue(displayValue + "3");
-  };
-
-  const twoHandler = () => {
-    setDisplayValue(displayValue + "2");
-  };
-
-  const oneHandler = () => {
-    setDisplayValue(displayValue + "1");
+  const oneToNineHandler = (str) => {
+    if (reset) {
+      setDisplayValue(str);
+      setReset(false);
+    } else if (displayValue[0] === "0") {
+      setDisplayValue(str);
+    } else {
+      setDisplayValue(displayValue + str);
+    }
   };
 
   const zeroHandler = () => {
-    setDisplayValue(displayValue + "0");
+    if (reset) {
+      setDisplayValue("0");
+      setReset(false);
+    } else {
+      setDisplayValue(displayValue + "0");
+    }
   };
 
-  const equalHandler = () => {};
-
-  const clearHandler = () => {};
+  const pointHandler = () => {
+    if (reset) {
+      setDisplayValue("0.");
+      setReset(false);
+    } else {
+      setDisplayValue(displayValue + ".");
+    }
+  };
 
   return (
     <div className="App">
       <section className="Calculator">
         <form>
-          <input className="Screen" type="text" value={displayValue} />
+          <input
+            className="Screen"
+            type="text"
+            onChange={(e) => setDisplayValue(e)}
+            value={displayValue}
+          />
         </form>
         <div className="Buttons">
           <button type="button" className="BtnYellow" onClick={multiplyHandler}>
@@ -103,31 +133,67 @@ const App = () => {
           <button type="button" className="BtnGrey" onClick={pointHandler}>
             .
           </button>
-          <button type="button" className="BtnGrey" onClick={nineHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("9")}
+          >
             9
           </button>
-          <button type="button" className="BtnGrey" onClick={eightHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("8")}
+          >
             8
           </button>
-          <button type="button" className="BtnGrey" onClick={sevenHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("7")}
+          >
             7
           </button>
-          <button type="button" className="BtnGrey" onClick={sixHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("6")}
+          >
             6
           </button>
-          <button type="button" className="BtnGrey" onClick={fiveHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("5")}
+          >
             5
           </button>
-          <button type="button" className="BtnGrey" onClick={fourHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("4")}
+          >
             4
           </button>
-          <button type="button" className="BtnGrey" onClick={threeHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("3")}
+          >
             3
           </button>
-          <button type="button" className="BtnGrey" onClick={twoHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("2")}
+          >
             2
           </button>
-          <button type="button" className="BtnGrey" onClick={oneHandler}>
+          <button
+            type="button"
+            className="BtnGrey"
+            onClick={() => oneToNineHandler("1")}
+          >
             1
           </button>
           <button type="button" className="BtnGrey" onClick={zeroHandler}>
