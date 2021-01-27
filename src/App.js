@@ -6,82 +6,76 @@ const App = () => {
   const [displayValue, setDisplayValue] = useState("0");
   const [prevValue, setPrevValue] = useState("");
   const [nextValue, setNextValue] = useState("");
-  const [equal, setEqual] = useState(true);
+  const [operation, setOperation] = useState("");
   const [reset, setReset] = useState(false);
 
-  const multiplyHandler = (e) => {
-    e.preventDefault();
-    if (prevValue.length === 0 && displayValue.length !== 0) {
-      setPrevValue(displayValue);
-      setDisplayValue("");
-    } else if (prevValue.length !== 0 && displayValue.length === 0) {
-      let temp = Number(prevValue) * Number(displayValue);
-      setNextValue(temp);
-      setPrevValue(temp);
-      setReset(true);
-    }
+  let operations = {
+    "+": function (x, y) {
+      return Number(x) + Number(y);
+    },
+    "-": function (x, y) {
+      return Number(x) - Number(y);
+    },
+    "*": function (x, y) {
+      return Number(x) * Number(y);
+    },
+    "/": function (x, y) {
+      return Number(x) / Number(y);
+    },
   };
 
-  const divideHandler = (e) => {
+  const operationsHandler = (e, str) => {
     e.preventDefault();
+    setOperation(str);
+    setReset(true);
     if (prevValue.length === 0 && nextValue.length === 0) {
       setPrevValue(displayValue);
       setDisplayValue("");
-    } else if (prevValue.length !== 0 && nextValue.length === 0) {
-      let temp = Number(prevValue) / Number(displayValue);
-      setDisplayValue(temp);
-      setPrevValue(temp);
+    } else if (prevValue.length !== 0 && nextValue.length === 0 && !reset) {
+      setNextValue(operations[operation](prevValue, displayValue));
+      setDisplayValue(operations[operation](prevValue, displayValue));
+      setPrevValue("");
+    } else if (prevValue.length === 0 && nextValue.length !== 0 && !reset) {
+      setPrevValue(operations[operation](nextValue, displayValue));
+      setDisplayValue(operations[operation](nextValue, displayValue));
       setNextValue("");
-      setReset(true);
-    }
-  };
-
-  const minusHandler = (e) => {
-    e.preventDefault();
-    if (prevValue.length === 0 && nextValue.length === 0) {
-      setPrevValue(displayValue);
-      setDisplayValue("");
-    } else if (prevValue.length !== 0 && nextValue.length === 0) {
-      let temp = Number(prevValue) - Number(displayValue);
-      setDisplayValue(temp);
-      setPrevValue(temp);
-      setNextValue("");
-      setReset(true);
-    }
-  };
-
-  const plusHandler = (e) => {
-    e.preventDefault();
-    if (prevValue.length === 0 && nextValue.length === 0) {
-      setPrevValue(displayValue);
-      setDisplayValue("");
-    } else if (prevValue.length !== 0 && nextValue.length === 0) {
-      let temp = Number(prevValue) + Number(displayValue);
-      setDisplayValue(temp);
-      setPrevValue(temp);
-      setNextValue("");
-      setReset(true);
     }
   };
 
   const equalHandler = (e) => {
-    setDisplayValue(nextValue);
-    setPrevValue("");
-    setNextValue("");
-    setReset(true);
+    e.preventDefault();
+    if (prevValue.length !== 0 && operation && displayValue.length !== 0) {
+      setDisplayValue(operations[operation](prevValue, displayValue));
+      setPrevValue("");
+      setNextValue("");
+      setOperation("");
+      setReset(true);
+    } else if (
+      nextValue.length !== 0 &&
+      operation &&
+      displayValue.length !== 0
+    ) {
+      setDisplayValue(operations[operation](nextValue, displayValue));
+      setPrevValue("");
+      setNextValue("");
+      setOperation("");
+      setReset(true);
+    }
   };
 
   const clearHandler = () => {
     setDisplayValue("0");
     setPrevValue("");
     setNextValue("");
+    setOperation("");
+    setReset(false);
   };
 
   const oneToNineHandler = (str) => {
     if (reset) {
       setDisplayValue(str);
       setReset(false);
-    } else if (displayValue[0] === "0") {
+    } else if (displayValue === "0") {
       setDisplayValue(str);
     } else {
       setDisplayValue(displayValue + str);
@@ -118,16 +112,32 @@ const App = () => {
           />
         </form>
         <div className="Buttons">
-          <button type="button" className="BtnYellow" onClick={multiplyHandler}>
+          <button
+            type="button"
+            className="BtnYellow"
+            onClick={(e) => operationsHandler(e, "*")}
+          >
             *
           </button>
-          <button type="button" className="BtnYellow" onClick={divideHandler}>
+          <button
+            type="button"
+            className="BtnYellow"
+            onClick={(e) => operationsHandler(e, "/")}
+          >
             /
           </button>
-          <button type="button" className="BtnYellow" onClick={minusHandler}>
+          <button
+            type="button"
+            className="BtnYellow"
+            onClick={(e) => operationsHandler(e, "-")}
+          >
             -
           </button>
-          <button type="button" className="BtnYellow" onClick={plusHandler}>
+          <button
+            type="button"
+            className="BtnYellow"
+            onClick={(e) => operationsHandler(e, "+")}
+          >
             +
           </button>
           <button type="button" className="BtnGrey" onClick={pointHandler}>

@@ -36,7 +36,9 @@ button {
   cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.BtnGrey:focus,
+.BtnYellow:focus {
   background: blue;
 }
 
