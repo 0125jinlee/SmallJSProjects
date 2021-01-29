@@ -1,60 +1,159 @@
 .App {
+  background: #86bbd8;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
 }
 
-.Calculator {
-  flex: 0 0 95%;
-  margin: 0;
-  padding: 0;
+.Container {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+  margin-right: auto;
+  margin-left: auto;
 }
 
-.Screen {
-  width: 100%;
-  font-size: 7rem;
-  padding: 0.5rem;
-  background: rgb(41, 41, 56);
-  color: white;
+.TipCalculator {
+  display: flex;
   border: none;
+  border-radius: 0.5rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  background-clip: border-box;
+  align-items: center;
+  flex-wrap: wrap;
   box-sizing: border-box;
 }
 
-.Buttons {
+.Title {
+  width: 100%;
+  background: #336699;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  color: white;
+  padding: 0.5rem;
+  margin: 0 0 0.75rem 0;
+  box-sizing: border-box;
+}
+
+.Title h2 {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.Body {
+  flex: 1 1 auto;
+  padding: 1.25rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.Notification {
+  display: none;
+  text-align: center;
+  padding: 0.25rem;
+  position: relative;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+}
+
+.Notification p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+.TipForm {
+  box-sizing: border-box;
+  margin-top: 0;
+}
+
+.TipForm section {
+  display: block;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-sizing: border-box;
+}
+
+.TipForm section h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.25rem;
+}
+
+.InputGroup {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
-  transition: all 0.5s linear;
+  align-items: stretch;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-button {
-  flex: 0 0 25%;
-  border: 1px solid black;
-  padding: 0.25rem 0;
-  transition: all 2s ease;
-  font-size: 4rem;
-  cursor: pointer;
+.InputGroupPrepend {
+  display: flex;
+  box-sizing: border-box;
 }
 
-button:hover,
-.BtnGrey:focus,
-.BtnYellow:focus {
-  background: blue;
-}
-
-.BtnYellow {
-  background: rgb(245, 146, 62);
+.InputGroupPrepend span {
+  background: #336699;
   color: white;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  white-space: nowrap;
+  border: 1px solid #ced4da;
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
 }
 
-.BtnGrey {
-  background: rgb(224, 224, 224);
+.DollarIcon {
+  text-align: center;
+  padding: 1.3rem 1.5rem;
 }
 
-.BtnEqual {
-  background: green;
+.UserIcon {
+  text-align: center;
+  padding: 1.3rem;
 }
 
-.BtnClear {
-  background: red;
+.NumberInput {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  position: relative;
+  display: block;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  flex: 1 1 auto;
+  padding: 0.5rem 1rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  overflow: visible;
+  margin: 0;
+}
+
+.Loading {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .Container {
+    max-width: 720px;
+    flex: 0 0 66.666667%;
+    max-width: 66.666667%;
+  }
+}
+
+@media (min-width: 576px) {
+  .Container {
+    max-width: 540px;
+  }
 }

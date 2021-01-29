@@ -1,230 +1,81 @@
-import React, { useState } from "react";
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faDollarSign, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import "./App.css";
 
 const App = () => {
-  const [displayValue, setDisplayValue] = useState("0");
-  const [prevValue, setPrevValue] = useState("");
-  const [nextValue, setNextValue] = useState("");
-  const [operation, setOperation] = useState("");
-  const [reset, setReset] = useState(false);
-
-  let operations = {
-    "+": function (x, y) {
-      return Number(x) + Number(y);
-    },
-    "-": function (x, y) {
-      return Number(x) - Number(y);
-    },
-    "*": function (x, y) {
-      return Number(x) * Number(y);
-    },
-    "/": function (x, y) {
-      return Number(x) / Number(y);
-    },
-  };
-
-  const operationsHandler = (e, str) => {
-    e.preventDefault();
-    setOperation(str);
-    setReset(true);
-    if (prevValue.length === 0 && nextValue.length === 0) {
-      setPrevValue(displayValue);
-      setDisplayValue("");
-    } else if (prevValue.length !== 0 && nextValue.length === 0 && !reset) {
-      setNextValue(operations[operation](prevValue, displayValue));
-      setDisplayValue(operations[operation](prevValue, displayValue));
-      setPrevValue("");
-    } else if (prevValue.length === 0 && nextValue.length !== 0 && !reset) {
-      setPrevValue(operations[operation](nextValue, displayValue));
-      setDisplayValue(operations[operation](nextValue, displayValue));
-      setNextValue("");
-    }
-  };
-
-  const equalHandler = (e) => {
-    e.preventDefault();
-    if (prevValue.length !== 0 && operation && displayValue.length !== 0) {
-      setDisplayValue(operations[operation](prevValue, displayValue));
-      setPrevValue("");
-      setNextValue("");
-      setOperation("");
-      setReset(true);
-    } else if (
-      nextValue.length !== 0 &&
-      operation &&
-      displayValue.length !== 0
-    ) {
-      setDisplayValue(operations[operation](nextValue, displayValue));
-      setPrevValue("");
-      setNextValue("");
-      setOperation("");
-      setReset(true);
-    }
-  };
-
-  const clearHandler = () => {
-    setDisplayValue("0");
-    setPrevValue("");
-    setNextValue("");
-    setOperation("");
-    setReset(false);
-  };
-
-  const oneToNineHandler = (str) => {
-    if (reset) {
-      setDisplayValue(str);
-      setReset(false);
-    } else if (displayValue === "0") {
-      setDisplayValue(str);
-    } else {
-      setDisplayValue(displayValue + str);
-    }
-  };
-
-  const zeroHandler = () => {
-    if (reset) {
-      setDisplayValue("0");
-      setReset(false);
-    } else {
-      setDisplayValue(displayValue + "0");
-    }
-  };
-
-  const pointHandler = () => {
-    if (reset) {
-      setDisplayValue("0.");
-      setReset(false);
-    } else {
-      setDisplayValue(displayValue + ".");
-    }
-  };
-
   return (
     <div className="App">
-      <section className="Calculator">
-        <form>
-          <input
-            className="Screen"
-            type="text"
-            onChange={(e) => setDisplayValue(e)}
-            value={displayValue}
-          />
-        </form>
-        <div className="Buttons">
-          <button
-            type="button"
-            className="BtnYellow"
-            onClick={(e) => operationsHandler(e, "*")}
-          >
-            *
-          </button>
-          <button
-            type="button"
-            className="BtnYellow"
-            onClick={(e) => operationsHandler(e, "/")}
-          >
-            /
-          </button>
-          <button
-            type="button"
-            className="BtnYellow"
-            onClick={(e) => operationsHandler(e, "-")}
-          >
-            -
-          </button>
-          <button
-            type="button"
-            className="BtnYellow"
-            onClick={(e) => operationsHandler(e, "+")}
-          >
-            +
-          </button>
-          <button type="button" className="BtnGrey" onClick={pointHandler}>
-            .
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("9")}
-          >
-            9
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("8")}
-          >
-            8
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("7")}
-          >
-            7
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("6")}
-          >
-            6
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("5")}
-          >
-            5
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("4")}
-          >
-            4
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("3")}
-          >
-            3
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("2")}
-          >
-            2
-          </button>
-          <button
-            type="button"
-            className="BtnGrey"
-            onClick={() => oneToNineHandler("1")}
-          >
-            1
-          </button>
-          <button type="button" className="BtnGrey" onClick={zeroHandler}>
-            0
-          </button>
-          <button
-            type="button"
-            className="BtnEqual BtnGrey"
-            onClick={equalHandler}
-          >
-            =
-          </button>
-          <button
-            type="button"
-            className="BtnClear BtnGrey"
-            onClick={clearHandler}
-          >
-            C
-          </button>
+      <div className="Container">
+        <div className="TipCalculator">
+          <div className="Title">
+            <h2>TIP CALCULATOR</h2>
+          </div>
+          <div className="Body">
+            <div className="Notification">
+              <p>Bill amount cannot be blank</p>
+              <p>Number of users must be greater than zero</p>
+              <p>You must select a Service</p>
+            </div>
+            <form className="TipForm">
+              <section>
+                <h3>How Much Was Your Bill ?</h3>
+                <div className="InputGroup">
+                  <div className="InputGroupPrepend">
+                    <span>
+                      <FontAwesomeIcon
+                        className="DollarIcon"
+                        icon={faDollarSign}
+                      />
+                    </span>
+                  </div>
+                  <input type="number" className="NumberInput" />
+                </div>
+              </section>
+              <section>
+                <h3>How Many People Sharing The Bill?</h3>
+                <div className="InputGroup">
+                  <div className="InputGroupPrepend">
+                    <span>
+                      <FontAwesomeIcon className="UserIcon" icon={faUser} />
+                    </span>
+                  </div>
+                  <input type="number" className="NumberInput" />
+                </div>
+              </section>
+              <section>
+                <h3>How Was Your Service?</h3>
+                <ul className="TipList">
+                  <li className="Choice">Choose...</li>
+                  <li className="Choice">Great 20%</li>
+                  <li className="Choice">Good 15%</li>
+                  <li className="Choice">Okay 10%</li>
+                  <li className="Choice">Bad 1%</li>
+                </ul>
+              </section>
+              <button>Calculate</button>
+            </form>
+            <div className="Loading">
+              <img src="/loading.gif" alt="Loading" />
+            </div>
+            <div className="Result">
+              <h3>
+                Tip Amount
+                <span>$</span> <span>5.00</span>
+              </h3>
+              <h3>
+                Total Amount
+                <span>$</span> <span>55.00</span>
+              </h3>
+              <h3>
+                Each Person Owes
+                <span>$</span> <span>55.00</span>
+              </h3>
+            </div>
+          </div>
         </div>
-      </section>
+      </div>
     </div>
   );
 };
