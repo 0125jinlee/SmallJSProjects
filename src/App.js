@@ -46,15 +46,23 @@ const App = () => {
               </section>
               <section>
                 <h3>How Was Your Service?</h3>
-                <ul className="TipList">
-                  <li className="Choice">Choose...</li>
-                  <li className="Choice">Great 20%</li>
-                  <li className="Choice">Good 15%</li>
-                  <li className="Choice">Okay 10%</li>
-                  <li className="Choice">Bad 1%</li>
-                </ul>
+                <div className="TipList">
+                  <select>
+                    <option selected value="0">
+                      Choose...
+                    </option>
+                    <option value="1">Great - 20%</option>
+                    <option value="2">Good - 15%</option>
+                    <option value="3">Okay - 10%</option>
+                    <option value="4">Bad - 1%</option>
+                  </select>
+                </div>
+                <input
+                  className="CalculateButton"
+                  type="submit"
+                  value="Calculate"
+                />
               </section>
-              <button>Calculate</button>
             </form>
             <div className="Loading">
               <img src="/loading.gif" alt="Loading" />
@@ -62,15 +70,15 @@ const App = () => {
             <div className="Result">
               <h3>
                 Tip Amount
-                <span>$</span> <span>5.00</span>
+                <span>$</span> <span></span>
               </h3>
               <h3>
                 Total Amount
-                <span>$</span> <span>55.00</span>
+                <span>$</span> <span></span>
               </h3>
               <h3>
                 Each Person Owes
-                <span>$</span> <span>55.00</span>
+                <span>$</span> <span></span>
               </h3>
             </div>
           </div>
