@@ -82,7 +82,7 @@ const App = () => {
                   <input
                     type="number"
                     className="NumberInput"
-                    onChange={(e) => billAmtHandler(e)}
+                    onChange={billAmtHandler}
                   />
                 </div>
               </section>
@@ -97,14 +97,14 @@ const App = () => {
                   <input
                     type="number"
                     className="NumberInput"
-                    onChange={(e) => setPeopleHandler(e)}
+                    onChange={setPeopleHandler}
                   />
                 </div>
               </section>
               <section>
                 <h3>How Was Your Service?</h3>
                 <div className="TipList">
-                  <select onChange={(e) => setServiceHandler(e)}>
+                  <select onChange={setServiceHandler}>
                     <option selected value="0">
                       Choose...
                     </option>
