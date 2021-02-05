@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheckCircle,
-  faEdit,
-  faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import React, { useState } from "react";
 
+import TodoList from "./TodoList";
 import "./App.css";
 
 const App = () => {
@@ -27,25 +22,12 @@ const App = () => {
       let arr = list;
       arr.push(input);
       setList(arr);
-      refreshList();
     }
   };
+  console.log(list);
 
-  let renderedList;
-
-  const refreshList = () => {
-    renderedList = list.map((element) => {
-      return (
-        <div className="Item">
-          <h5>{element}</h5>
-          <div className="ItemIcons">
-            <FontAwesomeIcon className="CheckIcon" icon={faCheckCircle} />
-            <FontAwesomeIcon className="EditIcon" icon={faEdit} />
-            <FontAwesomeIcon className="DeleteIcon" icon={faTimesCircle} />
-          </div>
-        </div>
-      );
-    });
+  const clearBtnHandler = () => {
+    setList([]);
   };
 
   return (
@@ -71,8 +53,8 @@ const App = () => {
           </div>
         </form>
         <div className="List">
-          <div className="Items">{renderedList}</div>
-          <button type="button" className="ClearBtn">
+          <TodoList list={list} />
+          <button type="button" className="ClearBtn" onClick={clearBtnHandler}>
             Clear Items
           </button>
         </div>
