@@ -9,7 +9,6 @@ const App = () => {
   const [showAlert, setShowAlert] = useState(false);
 
   const inputHandler = (e) => {
-    e.preventDefault();
     setInput(e.target.value);
   };
 
@@ -19,16 +18,16 @@ const App = () => {
       setShowAlert(true);
       setTimeout(() => setShowAlert(false), 4000);
     } else {
-      let arr = list;
-      arr.push(input);
+      let arr = [...list, input];
       setList(arr);
     }
   };
-  console.log(list);
 
   const clearBtnHandler = () => {
     setList([]);
   };
+
+  console.log(list);
 
   return (
     <div className="App">
@@ -53,7 +52,7 @@ const App = () => {
           </div>
         </form>
         <div className="List">
-          <TodoList list={list} />
+          <TodoList list={list} setList={setList} />
           <button type="button" className="ClearBtn" onClick={clearBtnHandler}>
             Clear Items
           </button>
