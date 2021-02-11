@@ -23,7 +23,7 @@ const Todo = (props) => {
             <input type="text" className="EditItem" placeholder={props.value} />
           </form>
         ) : (
-          props.value
+          props.index
         )}
       </h5>
       <div className="TodoItemIcons">
