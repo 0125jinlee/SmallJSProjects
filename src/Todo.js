@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
@@ -9,6 +9,13 @@ import {
 import "./Todo.css";
 
 const Todo = (props) => {
+  const [index] = useState(props.index);
+  const [newInput, setNewInput] = useState("");
+
+  const setNewInputHandler = (e) => {
+    setNewInput(e.target.value);
+  };
+
   return (
     <div className="TodoItem">
       <h5
@@ -19,11 +26,16 @@ const Todo = (props) => {
         }
       >
         {props.onEdit ? (
-          <form onSubmit={props.onEditHandler}>
-            <input type="text" className="EditItem" placeholder={props.value} />
+          <form onSubmit={() => props.editedInputHandler(index, newInput)}>
+            <input
+              type="text"
+              className="EditItem"
+              placeholder={props.value}
+              onChange={setNewInputHandler}
+            />
           </form>
         ) : (
-          props.index
+          props.value
         )}
       </h5>
       <div className="TodoItemIcons">

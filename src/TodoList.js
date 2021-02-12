@@ -4,7 +4,7 @@ import Input from "./Input.js";
 import Todo from "./Todo";
 import "./TodoList.css";
 
-const TodoList = (props) => {
+const TodoList = () => {
   const [list, setList] = useState([]);
 
   const addItemHandler = (input) => {
@@ -13,17 +13,10 @@ const TodoList = (props) => {
     setList(arr);
   };
 
-  console.log(list);
-
-  const onCheckHandler = (value) => {
+  const onCheckHandler = (index) => {
     let arr = [...list];
-    for (let i = 0; i < arr.length - 1; i++) {
-      if (arr[i].value === value) {
-        arr[i].onEdit = false;
-        arr[i].onCheck = !arr[i].onCheck;
-      }
-    }
-
+    arr[index].onEdit = false;
+    arr[index].onCheck = !arr[index].onCheck;
     setList(arr);
   };
 
@@ -40,10 +33,10 @@ const TodoList = (props) => {
     setList(arr);
   };
 
-  const editedInputHandler = (e) => {
-    e.preventDefault();
+  const editedInputHandler = (index, newInput) => {
     let arr = [...list];
-    arr[props.index].value = e.target.value;
+    arr[index].value = newInput;
+    arr[index].onEdit = false;
     setList(arr);
   };
 
@@ -57,13 +50,13 @@ const TodoList = (props) => {
         <Todo
           element={element}
           value={element.value}
-          onCheck={element.checked}
-          onEdit={element.edited}
+          onCheck={element.onCheck}
+          onEdit={element.onEdit}
           index={index}
-          key={index}
-          onCheckHandler={onCheckHandler}
-          onEditHandler={onEditHandler}
-          onDeleteHandler={onDeleteHandler}
+          key={index + element.value}
+          onCheckHandler={() => onCheckHandler(index)}
+          onEditHandler={() => onEditHandler(index)}
+          onDeleteHandler={() => onDeleteHandler(index)}
           editedInputHandler={editedInputHandler}
         />
       );
