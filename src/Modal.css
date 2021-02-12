@@ -1,0 +1,84 @@
+.ModalContainer {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.ModalImageContainer {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
+  align-items: center;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.ModalImageBox {
+  position: relative;
+  text-align: right;
+  margin-left: auto;
+  margin-right: auto;
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.ModalWindowClose {
+  color: #ef7998;
+  font-size: 3rem;
+  cursor: pointer;
+  transition: all 1s ease-in-out;
+}
+
+.ModalWindowClose:hover {
+  color: rgb(249, 228, 148);
+}
+
+.ModalImage {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 80vh;
+  border-radius: 0.3rem;
+}
+
+.ModalBtnLeft {
+  top: 50%;
+  left: 0;
+  transform: translateX(-60%);
+  position: absolute;
+  font-size: 4rem;
+  color: #ef7998;
+  transition: all 1s linear;
+  cursor: pointer;
+  font-size: 4rem;
+}
+
+.ModalBtnRight {
+  top: 50%;
+  right: 0;
+  transform: translateX(60%);
+  position: absolute;
+  font-size: 4rem;
+  color: #ef7998;
+  transition: all 1s linear;
+  cursor: pointer;
+}
+
+.ModalBtnLeft:hover {
+  color: rgb(249, 228, 148);
+}
+
+.ModalBtnRight:hover {
+  color: rgb(249, 228, 148);
+}
