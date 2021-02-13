@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 import StoreItem from "./StoreItem";
+import CartList from "./CartList";
 import Modal from "./Modal";
 import { data } from "./data";
 import "./App.css";
@@ -164,6 +165,7 @@ const App = () => {
         </nav>
         <div className="HeaderContainer">
           <div className="HeaderRow">
+            <CartList />
             <div className="Banner">
               <h1>
                 welcome to <strong>grandma's</strong>
