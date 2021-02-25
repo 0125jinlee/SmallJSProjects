@@ -11,4 +11,5 @@ export const data = [
   { item: "cupcake", imgUrl: "cupcake-3.jpeg", price: "15" },
   { item: "cake", imgUrl: "cake-3.jpeg", price: "15" },
   { item: "doughnut", imgUrl: "doughnut-3.jpeg", price: "15" },
+  {},
 ];
